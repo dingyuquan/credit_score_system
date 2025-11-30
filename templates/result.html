@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Application Result - Credit Application System{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    <h1>Application Result</h1>
+    
+    <div class="result-card {% if rating_result.approved %}approved{% else %}rejected{% endif %}">
+        <div class="result-header">
+            <h2>Application #{{ application.id }}</h2>
+            <div class="result-status">
+                {% if rating_result.approved %}
+                    <span class="status-badge approved large">✓ Application Approved</span>
+                {% else %}
+                    <span class="status-badge rejected large">✗ Application Rejected</span>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="result-details">
+            <div class="detail-section">
+                <h3>Application Information</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="label">Name:</span>
+                        <span class="value">{{ application.full_name }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Age:</span>
+                        <span class="value">{{ application.age }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Occupation:</span>
+                        <span class="value">{{ application.occupation }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Annual Income:</span>
+                        <span class="value">${{ "{:,.2f}".format(application.annual_income) }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Monthly Salary:</span>
+                        <span class="value">${{ "{:,.2f}".format(application.monthly_inhand_salary) }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h3>Evaluation Result</h3>
+                <div class="rating-display">
+                    <div class="rating-item">
+                        <span class="label">Credit Score:</span>
+                        <span class="value highlight">{{ "{:.0f}".format(rating_result.credit_score) }}</span>
+                    </div>
+                    <div class="rating-item">
+                        <span class="label">Credit Rating:</span>
+                        <span class="rating-badge rating-{{ rating_result.credit_rating }} large">
+                            {{ rating_result.credit_rating }}
+                        </span>
+                    </div>
+                    {% if rating_result.approved %}
+                    <div class="rating-item">
+                        <span class="label">Annual Interest Rate:</span>
+                        <span class="value highlight">{{ rating_result.interest_rate }}%</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% if rating_result.approved %}
+            <div class="success-message">
+                <p>🎉 Congratulations! Your application has been approved.</p>
+                <p>Based on your credit rating <strong>{{ rating_result.credit_rating }}</strong>, we offer you an annual interest rate of <strong>{{ rating_result.interest_rate }}%</strong>.</p>
+            </div>
+            {% else %}
+            <div class="rejection-message">
+                <p>We're sorry, but your application was not approved.</p>
+                <p>Your credit rating is <strong>{{ rating_result.credit_rating }}</strong>, which does not meet our loan requirements at this time.</p>
+                <p>We recommend improving your financial situation before applying again.</p>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="result-actions">
+            <a href="/dashboard" class="btn btn-primary">Back to Dashboard</a>
+            <a href="/apply" class="btn btn-secondary">Submit New Application</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

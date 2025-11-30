@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Credit Application System{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1>Welcome, {{ user.username }}</h1>
+    <a href="/apply" class="btn btn-primary">Submit New Application</a>
+</div>
+
+<div class="applications-section">
+    <h2>My Applications</h2>
+    {% if applications %}
+        <div class="applications-list">
+            {% for app in applications %}
+            <div class="application-card">
+                <div class="app-header">
+                    <h3>Application #{{ app.id }}</h3>
+                    <span class="status-badge {% if app.approved %}approved{% else %}rejected{% endif %}">
+                        {% if app.approved %}Approved{% else %}Rejected{% endif %}
+                    </span>
+                </div>
+                <div class="app-details">
+                    <p><strong>Name:</strong> {{ app.full_name }}</p>
+                    {% if app.credit_score %}
+                    <p><strong>Credit Score:</strong> {{ "{:.0f}".format(app.credit_score) }}</p>
+                    {% endif %}
+                    <p><strong>Credit Rating:</strong> <span class="rating-badge rating-{{ app.credit_rating }}">{{ app.credit_rating }}</span></p>
+                    <p><strong>Interest Rate:</strong> {{ app.interest_rate }}%</p>
+                    <p><strong>Applied At:</strong> {{ app.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                </div>
+                <a href="/application/{{ app.id }}" class="btn btn-secondary btn-sm">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>You haven't submitted any applications yet</p>
+            <a href="/apply" class="btn btn-primary">Submit Your First Application</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

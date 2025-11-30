@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Credit Application System{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to Credit Application System</h1>
+    <p>Fast, secure, and convenient online credit application service</p>
+    {% if not user %}
+        <div class="cta-buttons">
+            <a href="/register" class="btn btn-primary">Register Now</a>
+            <a href="/login" class="btn btn-secondary">Login</a>
+        </div>
+    {% else %}
+        <div class="cta-buttons">
+            <a href="/apply" class="btn btn-primary">Get Started</a>
+            <a href="/dashboard" class="btn btn-secondary">View Dashboard</a>
+        </div>
+    {% endif %}
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <h3>Fast Approval</h3>
+        <p>Quick evaluation of your credit application based on intelligent algorithms</p>
+    </div>
+    <div class="feature-card">
+        <h3>Secure & Reliable</h3>
+        <p>Your personal information and financial data are strictly protected</p>
+    </div>
+    <div class="feature-card">
+        <h3>Transparent Rates</h3>
+        <p>Transparent interest rate information based on your credit rating</p>
+    </div>
+</div>
+{% endblock %}

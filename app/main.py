@@ -295,6 +295,7 @@ async def view_application(
         raise HTTPException(status_code=404, detail="Application not found")
     
     rating_result = {
+        "credit_score": application.credit_score,
         "credit_rating": application.credit_rating,
         "interest_rate": application.interest_rate,
         "approved": application.approved

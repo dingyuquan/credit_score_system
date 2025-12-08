@@ -126,11 +126,11 @@ def convert_score_to_rating(credit_score: float) -> dict:
     
     if credit_score == 0:  # Good credit
         rating = "A"
-        interest_rate = 3.5
+        interest_rate = 7.0
         approved = True
     elif credit_score == 2:  # Fair credit
         rating = "B"
-        interest_rate = 7.0
+        interest_rate = 3.5
         approved = True
     else:  # Poor credit
         rating = "C"

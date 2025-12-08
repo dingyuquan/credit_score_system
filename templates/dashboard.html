@@ -22,9 +22,6 @@
                 </div>
                 <div class="app-details">
                     <p><strong>Name:</strong> {{ app.full_name }}</p>
-                    {% if app.credit_score %}
-                    <p><strong>Credit Score:</strong> {{ "{:.0f}".format(app.credit_score) }}</p>
-                    {% endif %}
                     <p><strong>Credit Rating:</strong> <span class="rating-badge rating-{{ app.credit_rating }}">{{ app.credit_rating }}</span></p>
                     <p><strong>Interest Rate:</strong> {{ app.interest_rate }}%</p>
                     <p><strong>Applied At:</strong> {{ app.created_at.strftime('%Y-%m-%d %H:%M') }}</p>

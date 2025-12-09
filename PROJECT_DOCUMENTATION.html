@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Application System - Project Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #4f46e5;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #4f46e5;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f46e5;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin: 8px 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #4f46e5;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        blockquote {
+            border-left: 4px solid #4f46e5;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Credit Application System - Project Documentation</h1>
+    
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#overview">1. Project Overview</a></li>
+            <li><a href="#features">2. Features</a></li>
+            <li><a href="#techstack">3. Technology Stack</a></li>
+            <li><a href="#architecture">4. System Architecture</a></li>
+            <li><a href="#installation">5. Installation & Setup</a></li>
+            <li><a href="#usage">6. Usage Guide</a></li>
+            <li><a href="#structure">7. Code Structure</a></li>
+            <li><a href="#ml">8. Machine Learning Integration</a></li>
+            <li><a href="#database">9. Database Schema</a></li>
+            <li><a href="#logging">10. Logging System</a></li>
+            <li><a href="#future">11. Future Improvements</a></li>
+        </ul>
+    </div>
+
+    <h2 id="overview">1. Project Overview</h2>
+    <p>The <strong>Credit Application System</strong> is a web-based application that allows users to apply for credit online. The system uses machine learning to evaluate credit applications and automatically determines credit ratings, interest rates, and approval status based on user-provided financial and personal information.</p>
+    
+    <h3>Key Highlights</h3>
+    <ul>
+        <li><strong>Automated Credit Assessment</strong>: ML-powered credit scoring replaces manual evaluation</li>
+        <li><strong>User-Friendly Interface</strong>: Modern, responsive web design with intuitive forms</li>
+        <li><strong>Secure Authentication</strong>: Session-based user authentication with password encryption</li>
+        <li><strong>Comprehensive Logging</strong>: Detailed logging of all predictions and system events</li>
+        <li><strong>Real-time Results</strong>: Instant credit rating and approval decisions</li>
+    </ul>
+
+    <h2 id="features">2. Features</h2>
+    
+    <h3>User Features</h3>
+    <h4>1. User Registration & Authentication</h4>
+    <ul>
+        <li>Secure user account creation</li>
+        <li>Login/logout functionality</li>
+        <li>Session-based authentication</li>
+    </ul>
+    
+    <h4>2. Credit Application Submission</h4>
+    <ul>
+        <li>Comprehensive application form collecting:
+            <ul>
+                <li>Personal information (SSN, name, age, gender)</li>
+                <li>Financial information (annual income, monthly salary)</li>
+                <li>Employment details (occupation, application month)</li>
+            </ul>
+        </li>
+        <li>Real-time form validation</li>
+    </ul>
+    
+    <h4>3. Application Results</h4>
+    <ul>
+        <li>Instant credit rating (A, B, or C)</li>
+        <li>Interest rate determination based on rating</li>
+        <li>Approval/rejection status</li>
+        <li>Detailed result display</li>
+    </ul>
+    
+    <h4>4. Application History</h4>
+    <ul>
+        <li>Dashboard showing all submitted applications</li>
+        <li>View detailed information for each application</li>
+        <li>Status tracking (Approved/Rejected)</li>
+    </ul>
+
+    <h3>System Features</h3>
+    <ul>
+        <li><strong>Machine Learning Integration</strong>: Pre-trained credit scoring model with automatic feature preprocessing</li>
+        <li><strong>Comprehensive Logging</strong>: All predictions logged to daily log files</li>
+        <li><strong>Error Handling</strong>: Graceful fallback if model fails to load</li>
+    </ul>
+
+    <h2 id="techstack">3. Technology Stack</h2>
+    
+    <h3>Backend Technologies</h3>
+    <ul>
+        <li><strong>FastAPI</strong> (v0.104.1): Modern, fast web framework for building APIs</li>
+        <li><strong>Uvicorn</strong>: ASGI server for running FastAPI applications</li>
+        <li><strong>SQLAlchemy</strong> (v2.0.23): ORM for database operations</li>
+        <li><strong>SQLite</strong>: Lightweight relational database</li>
+        <li><strong>Starlette Sessions</strong>: Session middleware for authentication</li>
+    </ul>
+    
+    <h3>Frontend Technologies</h3>
+    <ul>
+        <li><strong>Jinja2</strong> (v3.1.2): Server-side templating engine</li>
+        <li><strong>HTML5 & CSS3</strong>: Modern web standards</li>
+        <li><strong>Custom CSS</strong>: Professional, responsive design</li>
+        <li><strong>JavaScript</strong>: Client-side form enhancements</li>
+    </ul>
+    
+    <h3>Machine Learning & Data Science</h3>
+    <ul>
+        <li><strong>pandas</strong> (v2.1.4): Data manipulation and analysis</li>
+        <li><strong>scikit-learn</strong> (v1.3.2): Machine learning preprocessing
+            <ul>
+                <li>OneHotEncoder for categorical features</li>
+                <li>StandardScaler for numerical features</li>
+            </ul>
+        </li>
+        <li><strong>xgboost</strong> (v2.0.3): Gradient boosting model (loaded via joblib)</li>
+        <li><strong>joblib</strong> (v1.3.2): Model serialization/deserialization</li>
+    </ul>
+    
+    <h3>Security & Authentication</h3>
+    <ul>
+        <li><strong>passlib[bcrypt]</strong>: Password hashing and verification</li>
+        <li><strong>python-jose</strong>: JWT token support (for future API expansion)</li>
+    </ul>
+
+    <h2 id="architecture">4. System Architecture</h2>
+    
+    <h3>Architecture Overview</h3>
+    <p>The system follows a <strong>layered architecture</strong> pattern:</p>
+    
+    <pre>
+┌─────────────────────────────────────────┐
+│      Presentation Layer (Templates)     │
+│  Jinja2 Templates + Static CSS/JS      │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│      Application Layer (FastAPI)       │
+│  Routes, Request Handling, Validation   │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│      Business Logic Layer               │
+│  Credit Rating Calculation              │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│      ML Integration Layer               │
+│  Model Loading, Prediction, Conversion  │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│      Data Access Layer                  │
+│  SQLAlchemy ORM, Database Operations    │
+└─────────────────────────────────────────┘
+    </pre>
+
+    <h3>Component Interaction Flow</h3>
+    <ol>
+        <li><strong>User Request Flow</strong>:
+            <ul>
+                <li>User submits application form → FastAPI route receives data</li>
+                <li>Route validates input → Calls credit rating function</li>
+                <li>Rating function prepares data → Calls ML model integration</li>
+                <li>ML model processes input → Returns credit score</li>
+                <li>Score converted to rating → Result saved to database</li>
+                <li>Response rendered → User sees result page</li>
+            </ul>
+        </li>
+        <li><strong>Model Prediction Flow</strong>:
+            <ul>
+                <li>User input collected → Formatted as dictionary</li>
+                <li>Data preprocessing (one-hot encoding, scaling) → Feature alignment</li>
+                <li>Model prediction → Raw credit score</li>
+                <li>Score conversion → Rating (A/B/C) + Interest rate</li>
+                <li>Result logging → Written to log file</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2 id="installation">5. Installation & Setup</h2>
+    
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>Python 3.9 or higher</li>
+        <li>pip (Python package manager)</li>
+    </ul>
+    
+    <h3>Step 1: Clone or Download Project</h3>
+    <pre><code>cd Intro2Prog_Project</code></pre>
+    
+    <h3>Step 2: Install Dependencies</h3>
+    <pre><code>pip install -r requirements.txt</code></pre>
+    
+    <h3>Step 3: Verify Model Files</h3>
+    <p>Ensure the following files exist in the <code>model/</code> directory:</p>
+    <ul>
+        <li><code>cleaned_train_data.csv</code> - Training dataset</li>
+        <li><code>best_model.joblib</code> - Pre-trained ML model</li>
+        <li><code>Credit_score.py</code> - Model prediction function</li>
+    </ul>
+    
+    <h3>Step 4: Run the Application</h3>
+    <pre><code>python run.py</code></pre>
+    <p>Or using uvicorn directly:</p>
+    <pre><code>uvicorn app.main:app --reload</code></pre>
+    
+    <h3>Step 5: Access the Application</h3>
+    <p>Open your web browser and navigate to:</p>
+    <pre><code>http://localhost:8000</code></pre>
+
+    <h2 id="usage">6. Usage Guide</h2>
+    
+    <h3>For End Users</h3>
+    
+    <h4>1. Register an Account</h4>
+    <ul>
+        <li>Click "Register" on the homepage</li>
+        <li>Fill in username, email, and password</li>
+        <li>Submit the form</li>
+    </ul>
+    
+    <h4>2. Login</h4>
+    <ul>
+        <li>Click "Login" and enter your credentials</li>
+        <li>You'll be redirected to the dashboard</li>
+    </ul>
+    
+    <h4>3. Submit a Credit Application</h4>
+    <ul>
+        <li>Click "Get Started" or "Submit New Application"</li>
+        <li>Fill in all required fields:
+            <ul>
+                <li><strong>Personal Information</strong>: SSN, Full Name, Age, Gender</li>
+                <li><strong>Financial Information</strong>: Annual Income, Monthly In-Hand Salary</li>
+                <li><strong>Employment</strong>: Occupation, Application Month</li>
+            </ul>
+        </li>
+        <li>Click "Submit Application"</li>
+    </ul>
+    
+    <h4>4. View Results</h4>
+    <ul>
+        <li>Results are displayed immediately after submission</li>
+        <li>View includes:
+            <ul>
+                <li>Credit Rating (A, B, or C)</li>
+                <li>Interest Rate (if approved)</li>
+                <li>Approval Status</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h4>5. View Application History</h4>
+    <ul>
+        <li>Access your dashboard to see all applications</li>
+        <li>Click "View Details" to see full application information</li>
+    </ul>
+
+    <h2 id="structure">7. Code Structure</h2>
+    
+    <h3>Project Directory Structure</h3>
+    <pre>
+Intro2Prog_Project/
+├── app/                          # Main application package
+│   ├── __init__.py              # Package initialization
+│   ├── main.py                  # FastAPI application & routes
+│   ├── database.py              # Database models & configuration
+│   ├── models.py                # Pydantic schemas
+│   ├── auth.py                  # Authentication functions
+│   ├── credit_rating.py          # Credit rating business logic
+│   ├── model_integration.py     # ML model integration layer
+│   ├── logger_config.py         # Logging configuration
+│   └── middleware.py            # Middleware settings
+│
+├── model/                        # Machine learning model
+│   ├── Credit_score.py          # Core ML prediction function
+│   ├── cleaned_train_data.csv   # Training dataset
+│   └── best_model.joblib         # Serialized trained model
+│
+├── templates/                    # Jinja2 HTML templates
+│   ├── base.html                # Base template with navigation
+│   ├── index.html               # Homepage
+│   ├── login.html               # Login page
+│   ├── register.html            # Registration page
+│   ├── dashboard.html           # User dashboard
+│   ├── apply.html               # Application form
+│   └── result.html              # Result display page
+│
+├── static/                       # Static assets
+│   └── style.css                # Custom CSS styles
+│
+├── logs/                         # Application logs (auto-generated)
+│   └── credit_app_YYYYMMDD.log  # Daily log files
+│
+├── run.py                        # Application entry point
+├── requirements.txt              # Python dependencies
+├── README.md                     # Basic project readme
+└── credit_app.db                 # SQLite database (auto-generated)
+    </pre>
+
+    <h2 id="ml">8. Machine Learning Integration</h2>
+    
+    <h3>Model Architecture</h3>
+    <p>The system uses a <strong>pre-trained machine learning model</strong> (likely XGBoost) that has been trained on historical credit data. The model predicts credit scores based on multiple features.</p>
+    
+    <h3>Feature Engineering</h3>
+    
+    <h4>Input Features Required:</h4>
+    <ol>
+        <li><strong>Age</strong> (int): Applicant's age</li>
+        <li><strong>Gender</strong> (str): Male, Female, or Other</li>
+        <li><strong>SSN</strong> (str): Social Security Number</li>
+        <li><strong>Legal_name</strong> (str): Full legal name</li>
+        <li><strong>Annual_Income</strong> (float): Annual income in dollars</li>
+        <li><strong>Monthly_Inhand_Salary</strong> (float): Monthly take-home salary</li>
+        <li><strong>Occupation</strong> (str): Job occupation</li>
+        <li><strong>Month</strong> (str): Application month (January-December)</li>
+    </ol>
+    
+    <h4>Preprocessing Steps:</h4>
+    <ol>
+        <li><strong>Categorical Encoding</strong>: One-hot encoding for categorical features (Gender, Occupation, Month)</li>
+        <li><strong>Numerical Scaling</strong>: StandardScaler normalization for numerical features</li>
+        <li><strong>Feature Alignment</strong>: Missing features filled with training data modes/means</li>
+        <li><strong>Feature Selection</strong>: Uses optimal feature subset for prediction</li>
+    </ol>
+    
+    <h3>Credit Rating System</h3>
+    <p>The ML model outputs a numeric credit score, which is then converted to a rating:</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Credit Score Range</th>
+                <th>Rating</th>
+                <th>Interest Rate</th>
+                <th>Approved</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>≥ 700</td>
+                <td>A</td>
+                <td>3.5%</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>600 - 699</td>
+                <td>B</td>
+                <td>7.0%</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>&lt; 600</td>
+                <td>C</td>
+                <td>0.0%</td>
+                <td>No</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p><em>Note: These thresholds can be adjusted in <code>app/model_integration.py</code> based on your model's actual score distribution.</em></p>
+
+    <h2 id="database">9. Database Schema</h2>
+    
+    <h3>Users Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Integer</td>
+                <td>Primary key</td>
+            </tr>
+            <tr>
+                <td>username</td>
+                <td>String</td>
+                <td>Unique username</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>String</td>
+                <td>Unique email address</td>
+            </tr>
+            <tr>
+                <td>hashed_password</td>
+                <td>String</td>
+                <td>Bcrypt hashed password</td>
+            </tr>
+            <tr>
+                <td>created_at</td>
+                <td>DateTime</td>
+                <td>Account creation timestamp</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Credit Applications Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Integer</td>
+                <td>Primary key</td>
+            </tr>
+            <tr>
+                <td>user_id</td>
+                <td>Integer</td>
+                <td>Foreign key to users table</td>
+            </tr>
+            <tr>
+                <td>ssn</td>
+                <td>String</td>
+                <td>Social Security Number</td>
+            </tr>
+            <tr>
+                <td>full_name</td>
+                <td>String</td>
+                <td>Applicant's full name</td>
+            </tr>
+            <tr>
+                <td>age</td>
+                <td>Integer</td>
+                <td>Applicant's age</td>
+            </tr>
+            <tr>
+                <td>gender</td>
+                <td>String</td>
+                <td>Gender (Male/Female/Other)</td>
+            </tr>
+            <tr>
+                <td>annual_income</td>
+                <td>Float</td>
+                <td>Annual income</td>
+            </tr>
+            <tr>
+                <td>monthly_inhand_salary</td>
+                <td>Float</td>
+                <td>Monthly take-home salary</td>
+            </tr>
+            <tr>
+                <td>occupation</td>
+                <td>String</td>
+                <td>Job occupation</td>
+            </tr>
+            <tr>
+                <td>month</td>
+                <td>String</td>
+                <td>Application month</td>
+            </tr>
+            <tr>
+                <td>credit_score</td>
+                <td>Float</td>
+                <td>ML model predicted score</td>
+            </tr>
+            <tr>
+                <td>credit_rating</td>
+                <td>String</td>
+                <td>Rating (A/B/C)</td>
+            </tr>
+            <tr>
+                <td>interest_rate</td>
+                <td>Float</td>
+                <td>Interest rate percentage</td>
+            </tr>
+            <tr>
+                <td>approved</td>
+                <td>Boolean</td>
+                <td>Approval status</td>
+            </tr>
+            <tr>
+                <td>created_at</td>
+                <td>DateTime</td>
+                <td>Application submission timestamp</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="logging">10. Logging System</h2>
+    
+    <h3>Log Configuration</h3>
+    <p>The system uses Python's <code>logging</code> module with custom configuration:</p>
+    <ul>
+        <li><strong>Log Location</strong>: <code>logs/credit_app_YYYYMMDD.log</code></li>
+        <li><strong>Log Format</strong>: Timestamp, Logger Name, Level, Message</li>
+        <li><strong>Output</strong>: Both file and console</li>
+        <li><strong>Rotation</strong>: Daily log files (one file per day)</li>
+    </ul>
+    
+    <h3>Logged Information</h3>
+    <ul>
+        <li><strong>System Events</strong>: Application startup, database initialization, model loading</li>
+        <li><strong>Prediction Events</strong>: User input summary, model raw output, credit score conversion, final rating</li>
+        <li><strong>Application Events</strong>: User registration, login, application submission, processing results</li>
+    </ul>
+
+    <h2 id="future">11. Future Improvements</h2>
+    
+    <h3>Potential Enhancements</h3>
+    <ul>
+        <li><strong>API Endpoints</strong>: RESTful API for mobile applications</li>
+        <li><strong>Advanced Features</strong>: Email notifications, PDF report generation, application status tracking</li>
+        <li><strong>Model Improvements</strong>: Model retraining pipeline, A/B testing, model versioning</li>
+        <li><strong>User Experience</strong>: Application progress saving, advanced filtering, export functionality</li>
+        <li><strong>Administrative Features</strong>: Admin dashboard, user management, analytics and reporting</li>
+        <li><strong>Performance</strong>: Database connection pooling, caching layer, load balancing</li>
+        <li><strong>Testing</strong>: Unit tests, integration tests, end-to-end testing</li>
+    </ul>
+
+    <hr>
+    <p style="text-align: center; color: #666; margin-top: 40px;">
+        <strong>Document Version</strong>: 1.0<br>
+        <strong>Last Updated</strong>: December 2024<br>
+        <strong>Project</strong>: Credit Application System
+    </p>
+</body>
+</html>
+
